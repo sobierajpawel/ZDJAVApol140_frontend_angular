@@ -1,0 +1,8 @@
+.navbar-custom-color{
+    background-color: lightgray !important;
+}
+
+.selected-nav{
+    color:gray;
+    font-weight: bold;
+}

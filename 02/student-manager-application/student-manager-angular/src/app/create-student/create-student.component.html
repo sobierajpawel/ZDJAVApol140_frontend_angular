@@ -1,0 +1,27 @@
+<h4>Dodaj studenta</h4>
+
+<div *ngIf="isStudentSubmited == true" class="alert alert-success" role="alert">
+  Dodano nowego studenta!
+</div>
+
+<form (submit)="save(name.value, email.value)">
+  <!-- Imię i nazwisko -->
+  <div>
+    <label class="form-label">Imię i nazwisko</label>
+    <input class="form-control" placeholder="Wprowadź imię i nazwisko" #name>
+  </div>
+
+  <!-- Email -->
+  <div style="margin-bottom:10px;margin-top:10px">
+    <label class="form-label">Email</label>
+    <input class="form-control" placeholder="Wprowadź adres mailowy" #email>
+  </div>
+
+  <button [disabled]="isSubmiting" class="btn btn-success">
+    <span *ngIf="isSubmiting" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+    Zapisz</button>
+</form>
+
+<div *ngIf="isValidationError" style="color:red;font-size:12px; font-weight:500;">
+    Jedno z pól nie zostało wypełnione!
+</div>

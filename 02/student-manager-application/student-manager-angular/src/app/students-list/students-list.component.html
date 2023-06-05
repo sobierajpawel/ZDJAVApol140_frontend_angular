@@ -1,0 +1,39 @@
+<h4>Lista studentów</h4>
+
+<div *ngIf="isStudentRemoved == true" class="alert alert-danger" role="alert">
+    Usunięto studenta o id = {{ deletedId }}!
+</div>
+
+<table class="table table-striped table-hover">
+  <!-- Nagłówek -->
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Imię i nazwisko</th>
+      <th>Adres e-mail</th>
+      <th>Operacje</th>
+    </tr>
+  </thead>
+  <!-- Wiersze z rekordami -->
+  <tbody>
+    <tr *ngFor="let student of students"
+    [ngClass]="{'table-success':student.id == 2, 
+    'table-warning': student.id > 8, 
+    'table-danger': student.name == 'Chelsey Dietrich'}">
+      <td>{{student.id}}</td>
+      <td>{{student.name | uppercase}}</td>
+      <td>
+        <a *ngIf="student.id > 5">{{student.email | lowercase}}</a>
+      </td>
+      <td>
+        <button class="btn btn-outline-warning">Edytuj</button>
+        <button (click)="deleteStudent(student.id)" class="btn btn-outline-danger margin-left-5">Usuń</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngFor="let student of students">
+  <h5>{{student.name}}</h5>
+  <p>{{student.email}}</p>
+</div>
